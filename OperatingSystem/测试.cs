@@ -8,6 +8,6 @@ namespace OperatingSystem
 {
     internal class 测试
     {
-        string a = "测试同步；";
+        string a = "测试2；";
     }
 }
