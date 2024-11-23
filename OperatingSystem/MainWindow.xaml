@@ -7,7 +7,8 @@
         <!-- 菜单栏 -->
         <Menu VerticalAlignment="Top" Background="#007ACC" Foreground="White" FontSize="14">
             <MenuItem Header="进程管理">
-                <MenuItem Header="进程创建"/>
+                <MenuItem Header="创建进程" Click="OpenCreateProcessPage"/>
+
                 <MenuItem Header="进程调度"/>
                 <MenuItem Header="进程同步"/>
                 <MenuItem Header="避免死锁"/>
