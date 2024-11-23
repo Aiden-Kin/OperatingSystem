@@ -17,11 +17,13 @@
             <MenuItem Header="文件管理"/>
         </Menu>
 
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,30,0,0" Content=""/>
+
         <!-- 中间内容 -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="操作系统功能模拟" FontSize="30" FontWeight="Bold" Foreground="#FF6347" HorizontalAlignment="Center" Margin="0,0,0,20"/>
             <TextBlock Text="软工22-4班第一小组开发" FontSize="16" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
-            <TextBlock Text="XXX XXX XXX XXX" FontSize="16" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock Text="奶龙小组" FontSize="16" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
             <!-- 示例按钮 -->
             <Button Content="开始模拟" Width="120" Height="40" FontSize="16" Background="#007ACC" Foreground="White" HorizontalAlignment="Center" Margin="0,20,0,0"/>
