@@ -1,4 +1,4 @@
-﻿<Window x:Class="OperatingSystem.Progress.create"
+﻿<Page x:Class="OperatingSystem.Progress.CreatePage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -85,4 +85,4 @@
             <Button x:Name="returnButton" Content="返回主页面" Margin="5" Width="120" Click="return_Click"/>
         </StackPanel>
     </Grid>
-</Window>
+</Page>

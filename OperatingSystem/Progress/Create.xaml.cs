@@ -5,9 +5,9 @@ using OperatingSystem.Progress;
 
 namespace OperatingSystem.Progress
 {
-    public partial class create : Window
+    public partial class CreatePage : Page
     {
-        public create()
+        public CreatePage()
         {
             InitializeComponent();
 
@@ -72,10 +72,14 @@ namespace OperatingSystem.Progress
 
         private void return_Click(object sender, RoutedEventArgs e)
         {
-            // 返回主页面
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Hide(); // 隐藏当前窗口以保留状态
+            if (NavigationService != null && NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack(); // 回到上一个页面
+            }
+            else
+            {
+                MessageBox.Show("无法返回主页面！");
+            }
         }
 
         // 清空全局进程列表
