@@ -1,7 +1,7 @@
 ﻿<Window x:Class="OperatingSystem.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="操作系统功能模拟" Height="450" Width="800" Background="#2D2D30">
+        Title="操作系统功能模拟" Height="600" Width="900" Background="#2D2D30">
 
     <Grid>
         <!-- 菜单栏 -->

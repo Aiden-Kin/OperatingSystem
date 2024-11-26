@@ -18,11 +18,11 @@ namespace OperatingSystem.Progress
 
         // 进程调度信息
         public string Status { get; set; } // READY, RUNNING, BLOCK
-        public DateTime ArrivalTime { get; set; } // 到达时间
+        public int ArrivalTime { get; set; } // 到达时间
         public int TotalTime { get; set; } // 总服务时间
         public int RemainingTime { get; set; } // 剩余服务时间
         public int Runtime { get; set; } // 已运行时间
-        public DateTime? EndTime { get; set; } // 完成时间
+        public int EndTime { get; set; } // 完成时间
         public int Priority { get; set; } // 进程优先级
         public int Policy { get; set; } // 调度策略
         public string Event { get; set; } // 阻塞原因
@@ -35,15 +35,14 @@ namespace OperatingSystem.Progress
         public PCB Next { get; set; } // 链表结构指针
 
         // 构造函数
-        public PCB(int pid, string imageName, string description, int totalTime, int policy)
+        public PCB(int pid, string imageName, string description, int totalTime, int arriveTime)
         {
             PID = pid;
             ImageName = imageName;
             Description = description;
             TotalTime = totalTime;
             RemainingTime = totalTime;
-            ArrivalTime = DateTime.Now;
-            Policy = policy;
+            ArrivalTime = arriveTime;
             Status = "READY"; // 初始状态
         }
     }

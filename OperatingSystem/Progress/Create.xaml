@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OperatingSystem.Progress"
         mc:Ignorable="d"
-        Title="进程创建" Height="450" Width="800">
+        Title="进程创建" Height="480" Width="850">
     <Grid Margin="10">
         <!-- 定义行和列 -->
         <Grid.RowDefinitions>
@@ -30,22 +30,23 @@
 
         <!-- 数据表格 -->
         <DataGrid x:Name="ProcessDataGrid" 
-                  Grid.Row="1"
-                  AutoGenerateColumns="False" 
-                  HorizontalAlignment="Stretch" 
-                  VerticalAlignment="Top"
-                  Height="200" 
-                  Margin="0,10,0,10"
-                  IsReadOnly="True">
+          Grid.Row="1"
+          AutoGenerateColumns="False" 
+          HorizontalAlignment="Stretch" 
+          VerticalAlignment="Top"
+          Height="200" 
+          Margin="0,10,0,10"
+          IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="进程ID" Binding="{Binding PID}" Width="100"/>
-                <DataGridTextColumn Header="映像名称" Binding="{Binding ImageName}" Width="150"/>
-                <DataGridTextColumn Header="描述" Binding="{Binding Description}" Width="200"/>
-                <DataGridTextColumn Header="优先级" Binding="{Binding Priority}" Width="100"/>
-                <DataGridTextColumn Header="策略" Binding="{Binding Policy}" Width="100"/>
-                <DataGridTextColumn Header="到达时间" Binding="{Binding ArrivalTime, StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="150"/>
-                <DataGridTextColumn Header="总时间" Binding="{Binding TotalTime}" Width="100"/>
+                <DataGridTextColumn Header="进程ID" Binding="{Binding PID}" Width="75"/>
+                <DataGridTextColumn Header="进程映像名称" Binding="{Binding ImageName}" Width="80"/>
+                <DataGridTextColumn Header="进程描述" Binding="{Binding Description}" Width="120"/>
+                <DataGridTextColumn Header="进程状态" Binding="{Binding Status}" Width="100"/>
+                <DataGridTextColumn Header="优先级" Binding="{Binding Priority}" Width="75"/>
+                <DataGridTextColumn Header="到达时间" Binding="{Binding ArrivalTime}" Width="100"/>
+                <DataGridTextColumn Header="服务时间" Binding="{Binding ServiceTime}" Width="100"/>
                 <DataGridTextColumn Header="剩余时间" Binding="{Binding RemainingTime}" Width="100"/>
+                <DataGridTextColumn Header="完成时间" Binding="{Binding CompletionTime}" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -64,15 +65,16 @@
                          GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
                 <TextBox x:Name="DescriptionTextBox" Tag="请输入描述" Text="请输入描述" Margin="5" Width="300"
                          GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                <TextBox x:Name="PriorityTextBox" Tag="请输入优先级" Text="请输入优先级" Margin="5" Width="300"
-                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
             </StackPanel>
 
             <!-- 右侧输入框 -->
             <StackPanel Grid.Column="1">
-                <TextBox x:Name="TotalTimeTextBox" Tag="请输入总时间" Text="请输入总时间" Margin="5" Width="300"
+                <TextBox x:Name="PriorityTextBox" Tag="请输入优先级" Text="请输入优先级" Margin="5" Width="300"
                          GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                <TextBox x:Name="PolicyTextBox" Tag="请输入调度策略" Text="请输入调度策略" Margin="5" Width="300"
+                <TextBox x:Name="TotalTimeTextBox" Tag="请输入服务时间" Text="请输入服务时间" Margin="5" Width="300"
+                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                <TextBox x:Name="ArriveTimeTextBox" Tag="请输入到达时间" Text="请输入到达时间" Margin="5" Width="300"
                          GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
             </StackPanel>
         </Grid>

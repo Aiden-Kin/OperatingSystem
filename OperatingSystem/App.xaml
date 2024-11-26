@@ -4,6 +4,27 @@
              xmlns:local="clr-namespace:OperatingSystem"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="MenuItem">
+            <!-- 默认背景颜色 -->
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+
+            <!-- 重写触发器样式 -->
+            <Style.Triggers>
+                <!-- 鼠标悬停 -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#005A9E"/>
+                    <!-- 深色蓝 -->
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+
+                <!-- 被选中 -->
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#005A9E"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

@@ -24,19 +24,18 @@ namespace OperatingSystem.Progress
                 if (int.TryParse(ProcessIDTextBox.Text, out int pid) &&
                     int.TryParse(TotalTimeTextBox.Text, out int totalTime) &&
                     int.TryParse(PriorityTextBox.Text, out int priority) &&
-                    int.TryParse(PolicyTextBox.Text, out int policy))
+                    int.TryParse(ArriveTimeTextBox.Text, out int ArriveTime))
                 {
                     var process = new PCB(
                         pid,
                         ImageNameTextBox.Text,
                         DescriptionTextBox.Text,
                         totalTime,
-                        policy
+                        ArriveTime
                     )
                     {
                         Priority = priority,
                         PC = 0,
-                        Event = null,
                         Mutex = 0,
                         Empty = 0,
                         Full = 0
