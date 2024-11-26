@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using OperatingSystem.Progress;
 
 namespace OperatingSystem.Progress
 {
@@ -20,19 +21,25 @@ namespace OperatingSystem.Progress
             try
             {
                 // 验证输入并添加进程
-                if (int.TryParse(ProcessIDTextBox.Text, out int processID) &&
-                    double.TryParse(ArrivalTimeTextBox.Text, out double arrivalTime) &&
-                    double.TryParse(ServiceTimeTextBox.Text, out double serviceTime))
+                if (int.TryParse(ProcessIDTextBox.Text, out int pid) &&
+                    int.TryParse(TotalTimeTextBox.Text, out int totalTime) &&
+                    int.TryParse(PriorityTextBox.Text, out int priority) &&
+                    int.TryParse(PolicyTextBox.Text, out int policy))
                 {
-                    var process = new ProcessModel
+                    var process = new PCB(
+                        pid,
+                        ImageNameTextBox.Text,
+                        DescriptionTextBox.Text,
+                        totalTime,
+                        policy
+                    )
                     {
-                        ProcessID = processID,
-                        ProcessName = ProcessNameTextBox.Text,
-                        ProcessDescription = ProcessDescriptionTextBox.Text,
-                        ArrivalTime = arrivalTime,
-                        ServiceTime = serviceTime,
-                        RemainingTime = serviceTime, // 初始剩余时间等于服务时间
-                        CompletionTime = null // 表示完成时间未设置
+                        Priority = priority,
+                        PC = 0,
+                        Event = null,
+                        Mutex = 0,
+                        Empty = 0,
+                        Full = 0
                     };
 
                     App.Processes.Add(process); // 添加到全局数据
@@ -40,7 +47,7 @@ namespace OperatingSystem.Progress
                 }
                 else
                 {
-                    MessageBox.Show("请输入有效的数字！");
+                    MessageBox.Show("请输入有效的数字！进程ID、总时间、优先级和调度策略必须是整数。");
                 }
             }
             catch (Exception ex)
@@ -49,10 +56,11 @@ namespace OperatingSystem.Progress
             }
         }
 
+
         // 删除选中进程
         private void DeleteProcessButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ProcessDataGrid.SelectedItem is ProcessModel selectedProcess)
+            if (ProcessDataGrid.SelectedItem is PCB selectedProcess)
             {
                 App.Processes.Remove(selectedProcess); // 从全局数据中删除
             }
@@ -79,7 +87,7 @@ namespace OperatingSystem.Progress
         // 清空输入框
         private void ClearInputFields()
         {
-            foreach (var control in new TextBox[] { ProcessIDTextBox, ProcessNameTextBox, ProcessDescriptionTextBox, ArrivalTimeTextBox, ServiceTimeTextBox })
+            foreach (var control in new TextBox[] { ProcessIDTextBox, ImageNameTextBox, DescriptionTextBox, TotalTimeTextBox, PriorityTextBox, PolicyTextBox })
             {
                 control.Text = control.Tag.ToString();
                 control.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Gray);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-public class ProcessModel : INotifyPropertyChanged
+public class PCB : INotifyPropertyChanged
 {
     private int _processID;
     public int ProcessID
