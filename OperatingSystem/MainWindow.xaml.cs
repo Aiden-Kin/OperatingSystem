@@ -42,10 +42,10 @@ namespace OperatingSystem
         /// <summary>
         /// 点击"进程调度"菜单项时导航到 ProcessSchedulePage 页面。
         /// </summary>
-        //private void MenuItem_ProcessSchedule_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new ProcessSchedulePage());
-        //}
+        private void MenuItem_ProcessSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Dispatch());
+        }
 
         ///// <summary>
         ///// 点击"进程同步"菜单项时导航到 ProcessSyncPage 页面。
