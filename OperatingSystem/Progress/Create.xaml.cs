@@ -16,7 +16,6 @@ namespace OperatingSystem.Progress
         }
 
         // 创建进程
-        // 创建进程逻辑
         private void CreateProcessButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -25,33 +24,29 @@ namespace OperatingSystem.Progress
                 if (int.TryParse(ProcessIDTextBox.Text, out int pid) &&
                     int.TryParse(TotalTimeTextBox.Text, out int totalTime) &&
                     int.TryParse(PriorityTextBox.Text, out int priority) &&
-                    int.TryParse(ArriveTimeTextBox.Text, out int arriveTime))
+                    int.TryParse(ArriveTimeTextBox.Text, out int ArriveTime))
                 {
-                    // 读取服务时间
-                    int.TryParse(TotalTimeTextBox.Text, out int serviceTime);
-
                     var process = new PCB(
                         pid,
                         ImageNameTextBox.Text,
                         DescriptionTextBox.Text,
                         totalTime,
-                        arriveTime
+                        ArriveTime
                     )
                     {
                         Priority = priority,
                         PC = 0,
                         Mutex = 0,
                         Empty = 0,
-                        Full = 0,
-                        ServiceTime = serviceTime // 使用输入的服务时间
+                        Full = 0
                     };
 
                     App.Processes.Add(process); // 添加到全局数据
-                    ClearInputFields(); // 清空输入框
+                    ClearInputFields();
                 }
                 else
                 {
-                    MessageBox.Show("请输入有效的数字！进程ID、总时间、优先级和到达时间必须是整数。");
+                    MessageBox.Show("请输入有效的数字！进程ID、总时间、优先级和调度策略必须是整数。");
                 }
             }
             catch (Exception ex)
@@ -59,7 +54,6 @@ namespace OperatingSystem.Progress
                 MessageBox.Show($"发生错误: {ex.Message}");
             }
         }
-
 
 
         // 删除选中进程
@@ -93,17 +87,15 @@ namespace OperatingSystem.Progress
             App.Processes.Clear();
         }
 
-       
         // 清空输入框
         private void ClearInputFields()
         {
-            foreach (var control in new TextBox[] { ProcessIDTextBox, ImageNameTextBox, DescriptionTextBox, TotalTimeTextBox, PriorityTextBox, ArriveTimeTextBox })
+            foreach (var control in new TextBox[] { ProcessIDTextBox, ImageNameTextBox, DescriptionTextBox, TotalTimeTextBox, PriorityTextBox, PolicyTextBox })
             {
-                control.Text = string.Empty; // 清空输入框
-                control.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black); // 重置颜色
+                control.Text = control.Tag.ToString();
+                control.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Gray);
             }
         }
-
 
         // 输入框获取焦点
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

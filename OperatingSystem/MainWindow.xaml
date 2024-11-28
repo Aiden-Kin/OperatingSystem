@@ -9,7 +9,7 @@
             <MenuItem Header="进程管理">
                 <MenuItem Header="创建进程" Click="MenuItem_ProcessCreate_Click"/>
 
-                <MenuItem Header="进程调度" Click="MenuItem_ProcessSchedule_Click"/>
+                <MenuItem Header="进程调度"/>
                 <MenuItem Header="进程同步"/>
                 <MenuItem Header="避免死锁"/>
             </MenuItem>
