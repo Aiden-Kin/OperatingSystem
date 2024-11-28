@@ -12,6 +12,7 @@ namespace OperatingSystem
     public partial class App : Application
     {
         public static ObservableCollection<PCB> Processes { get; set; } = new ObservableCollection<PCB>();
+     
 
     }
 
