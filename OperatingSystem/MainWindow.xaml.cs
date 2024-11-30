@@ -47,13 +47,11 @@ namespace OperatingSystem
             MainFrame.Navigate(new Dispatch());
         }
 
-        ///// <summary>
-        ///// 点击"进程同步"菜单项时导航到 ProcessSyncPage 页面。
-        ///// </summary>
-        //private void MenuItem_ProcessSync_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new ProcessSyncPage());
-        //}
+       
+        private void OpenSynchronization_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Synchronization());
+        }
 
         ///// <summary>
         ///// 点击"避免死锁"菜单项时导航到 AvoidDeadlockPage 页面。
