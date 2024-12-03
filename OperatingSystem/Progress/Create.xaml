@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OperatingSystem.Progress"
         mc:Ignorable="d"
+      Background="#f5f5f5"
         Title="进程创建" Height="480" Width="850">
     <Grid Margin="10">
         <!-- 定义行和列 -->
