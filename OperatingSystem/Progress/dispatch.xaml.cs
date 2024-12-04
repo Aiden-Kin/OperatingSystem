@@ -22,7 +22,7 @@ namespace OperatingSystem.Progress
         // 初始化就绪队列的测试数据
         private void InitializeData()
         {
-           
+
 
             UpdateUI();
         }
@@ -103,6 +103,13 @@ namespace OperatingSystem.Progress
 
             foreach (var process in readyQueue)
             {
+
+                if (currentTime < process.ArrivalTime)
+                {
+                    // 进程未到达时，模拟时钟等待
+                    await Task.Delay((process.ArrivalTime - currentTime) * 100); // 等待到进程的到达时间
+                    currentTime = process.ArrivalTime; // 更新当前时钟为进程到达时间
+                }
                 process.Status = "RUNNING";
                 App.ExecutionSequence.Add(process.PID); // 记录执行顺序
                 UpdateUI();
@@ -160,42 +167,47 @@ namespace OperatingSystem.Progress
         // 时间片轮转调度算法 (RR)
         private async Task ScheduleRR(int timeSlice)
         {
-            // 模拟开始时间
-            var simulationStartTime = DateTime.Now;
+            int simulationTime = 0; // 模拟时间从零开始
 
-            // 获取 READY 状态的进程队列
+            // 获取所有状态为 READY 的进程
             var readyQueue = App.Processes.Where(p => p.Status == "READY").ToList();
 
-            while (readyQueue.Count > 0)
+            while (readyQueue.Count > 0) 
             {
                 foreach (var process in readyQueue.ToList())
                 {
-                    process.Status = "RUNNING"; // 设置为运行状态
-                    App.ExecutionSequence.Add(process.PID); // 记录执行顺序
+                    // 如果进程的到达时间晚于当前模拟时间，跳过这次循环
+                    if (process.ArrivalTime > simulationTime)
+                        continue;
+
+                    process.Status = "RUNNING"; // 设置状态为运行中
+                    App.ExecutionSequence.Add(process.PID); 
                     UpdateUI();
 
-                    // 模拟时间片运行
-                    int sliceTime = Math.Min(timeSlice, process.RemainingTime); // 计算实际运行时间
-                    await Task.Delay(sliceTime * 1000); // 以毫秒为单位延迟
+                    // 计算当前时间片的实际运行时间
+                    int sliceTime = Math.Min(timeSlice, process.RemainingTime);
+                    simulationTime += sliceTime; // 推进模拟时钟
+                    await Task.Delay(sliceTime * 500); 
 
-                    // 减少剩余时间
-                    process.RemainingTime = Math.Max(0, process.RemainingTime - sliceTime);
+                 
+                    process.RemainingTime -= sliceTime;
 
-                    if (process.RemainingTime <= 0)
+                    if (process.RemainingTime <= 0) // 如果进程已完成
                     {
-                        process.Status = "COMPLETED"; // 设置为 COMPLETED
-                        process.EndTime = (int)(DateTime.Now - simulationStartTime).TotalSeconds;
-                        readyQueue.Remove(process); // 从队列中移除
+                        process.Status = "COMPLETED";
+                        process.EndTime = simulationTime;
+                        readyQueue.Remove(process); 
                     }
                     else
                     {
-                        process.Status = "READY"; // 重新设置为 READY
+                        process.Status = "READY"; 
                     }
 
-                    UpdateUI(); // 更新界面
+                    UpdateUI(); // 更新 UI 界面
                 }
             }
         }
+
         private async void StartSimulationButton_Click(object sender, RoutedEventArgs e)
         {
             try
