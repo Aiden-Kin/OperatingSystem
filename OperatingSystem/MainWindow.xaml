@@ -11,7 +11,7 @@
 
                 <MenuItem Header="进程调度" Click="MenuItem_ProcessSchedule_Click"/>
                 <MenuItem Header="进程同步" Click="OpenSynchronization_Click" />
-                <MenuItem Header="避免死锁"/>
+                <MenuItem Header="避免死锁" Click="MenuItem_AvoidDeadlock_Click"/>
             </MenuItem>
             <MenuItem Header="存储管理"/>
             <MenuItem Header="设备管理"/>

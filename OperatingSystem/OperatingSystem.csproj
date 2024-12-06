@@ -8,14 +8,6 @@
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <Page Remove="Progress\AvoidDeadlock.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="Progress\AvoidDeadlock.xaml" />
-	</ItemGroup>
-
 	<!-- 正确关联 create.xaml 和 create.xaml.cs -->
 
 </Project>

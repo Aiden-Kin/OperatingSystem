@@ -53,13 +53,13 @@ namespace OperatingSystem
             MainFrame.Navigate(new Synchronization());
         }
 
-        ///// <summary>
-        ///// 点击"避免死锁"菜单项时导航到 AvoidDeadlockPage 页面。
-        ///// </summary>
-        //private void MenuItem_AvoidDeadlock_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new AvoidDeadlockPage());
-        //}
+        /// <summary>
+        /// 点击"避免死锁"菜单项时导航到 AvoidDeadlockPage 页面。
+        /// </summary>
+        private void MenuItem_AvoidDeadlock_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new AvoidDeadlock());
+        }
 
         ///// <summary>
         ///// 点击"存储管理"菜单项时导航到 StorageManagementPage 页面。
