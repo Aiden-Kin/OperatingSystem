@@ -1,0 +1,44 @@
+﻿<Page x:Class="OperatingSystem.store.Storage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="页面置换模拟器"
+      Background="#f5f5f5">
+    <Grid>
+        <!-- 顶部区域 -->
+        <Grid Margin="10">
+            <!-- 右上角按钮 -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Content="停止模拟" Name="StopSimulationButton" Width="100" Margin="5" Click="StopSimulationButton_Click"/>
+              
+            </StackPanel>
+        </Grid>
+
+        <!-- 输入区域 -->
+        <TextBlock Text="请输入页面访问序列（用逗号分隔）：" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox Name="PageSequenceTextBox" Margin="250,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500" />
+
+        <TextBlock Text="请输入内存块数：" Margin="10,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox Name="MemoryBlockCountTextBox" Margin="250,50,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="500" />
+
+        <TextBlock Text="请选择页面置换算法：" Margin="10,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <StackPanel Orientation="Horizontal" Margin="250,90,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <RadioButton Name="OptAlgorithm" Content="最佳页面置换算法(OPT)" IsChecked="True" Margin="0,0,20,0"/>
+            <RadioButton Name="FifoAlgorithm" Content="先进先出(FIFO)" Margin="0,0,20,0"/>
+            <RadioButton Name="LruAlgorithm" Content="最近最久未使用(LRU)" />
+        </StackPanel>
+
+        <!-- 开始模拟按钮 -->
+        <Button Content="开始模拟" Name="StartSimulationButton" Margin="10,130,10,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Click="StartSimulationButton_Click"/>
+
+        <!-- 表格展示区域 -->
+        <ScrollViewer Name="StepsScrollViewer" Margin="10,170,10,200" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid Name="StepsGrid" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <!-- 动态生成表格 -->
+            </Grid>
+        </ScrollViewer>
+
+        <!-- 计算结果 -->
+        <TextBlock Text="计算结果：" Margin="10,630,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox Name="ResultTextBox" Margin="10,660,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" IsReadOnly="True" TextWrapping="Wrap" Height="80" />
+    </Grid>
+</Page>

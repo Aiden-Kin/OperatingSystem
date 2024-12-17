@@ -120,7 +120,6 @@ namespace OperatingSystem.Progress
 
 
 
-        // 短进程优先调度算法 (SJF)
         // 抢占式短进程优先调度算法 (SRTF)
         private async Task ScheduleSJF()
         {

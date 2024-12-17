@@ -13,7 +13,7 @@
                 <MenuItem Header="进程同步" Click="OpenSynchronization_Click" />
                 <MenuItem Header="避免死锁"/>
             </MenuItem>
-            <MenuItem Header="存储管理"/>
+            <MenuItem Header="存储管理"  Click="MenuItem_StorageManagement_Click"/>
             <MenuItem Header="设备管理"/>
             <MenuItem Header="文件管理"/>
         </Menu>

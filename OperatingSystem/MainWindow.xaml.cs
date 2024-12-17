@@ -1,4 +1,5 @@
 ﻿using OperatingSystem.Progress;
+using OperatingSystem.store;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,13 +62,11 @@ namespace OperatingSystem
         //    MainFrame.Navigate(new AvoidDeadlockPage());
         //}
 
-        ///// <summary>
-        ///// 点击"存储管理"菜单项时导航到 StorageManagementPage 页面。
-        ///// </summary>
-        //private void MenuItem_StorageManagement_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new StorageManagementPage());
-        //}
+
+        private void MenuItem_StorageManagement_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Storage());
+        }
 
         ///// <summary>
         ///// 点击"设备管理"菜单项时导航到 DeviceManagementPage 页面。
