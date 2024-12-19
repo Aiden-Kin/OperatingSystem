@@ -8,6 +8,10 @@
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
 	<!-- 正确关联 create.xaml 和 create.xaml.cs -->
 
 </Project>

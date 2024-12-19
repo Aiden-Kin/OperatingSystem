@@ -68,6 +68,11 @@ namespace OperatingSystem
             MainFrame.Navigate(new Storage());
         }
 
+        private void FileManage_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new FileManage());
+        }
+
         ///// <summary>
         ///// 点击"设备管理"菜单项时导航到 DeviceManagementPage 页面。
         ///// </summary>
