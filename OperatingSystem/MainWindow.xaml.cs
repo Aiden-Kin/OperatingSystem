@@ -85,9 +85,9 @@ namespace OperatingSystem
         ///// <summary>
         ///// 点击"文件管理"菜单项时导航到 FileManagementPage 页面。
         ///// </summary>
-        //private void MenuItem_FileManagement_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new FileManagementPage());
-        //}
+        private void MenuItem_equipment_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DiskSchedulerPage());
+        }
     }
 }
