@@ -1,0 +1,101 @@
+﻿<Page x:Class="OperatingSystem.store.FileManage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="#FAFAFA"
+
+      Title="文件管理 - 三级目录文件系统">
+
+    <Grid Margin="10">
+        <!-- 整体布局：左右两列 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="105"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧：用户信息与文件树 -->
+        <Border Grid.Column="0" Margin="5" Background="White" BorderBrush="#DDD" BorderThickness="1" Padding="10">
+            <StackPanel>
+                <!-- 用户登录信息 -->
+                <TextBlock Text="用户登录" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBlock Text="用户名：" Margin="0,5"/>
+                <TextBox x:Name="UsernameBox" Width="200" Height="25" Margin="0,0,0,5" BorderBrush="#CCC"/>
+                <TextBlock Text="密码：" Margin="0,5"/>
+                <PasswordBox x:Name="PasswordBox" Width="200" Height="25" Margin="0,0,0,10" BorderBrush="#CCC"/>
+
+                <!-- 用户操作按钮 -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5">
+                    <Button Content="注册" Width="60" Height="25" Margin="5,0" Background="#007ACC" Foreground="White"
+        Click="RegisterButton_Click"/>
+                    <Button Content="登录" Width="60" Height="25" Margin="5,0" Background="#28A745" Foreground="White"
+        Click="LoginButton_Click"/>
+                    <Button Content="退出" Width="60" Height="25" Margin="5,0" Background="#DC3545" Foreground="White"
+        Click="LogoutButton_Click"/>
+                </StackPanel>
+
+                <!-- 文件树 -->
+                <TextBlock Text="文件目录" FontWeight="Bold" FontSize="16" Margin="0,10,0,5"/>
+                <TreeView x:Name="FileTree" Background="#F8F8F8" BorderThickness="1" BorderBrush="#DDD" 
+                          Height="300" Margin="0,0,0,5">
+                    <TreeViewItem Header="zhangsan" IsExpanded="True">
+                        <TreeViewItem Header="list1" IsExpanded="True">
+                            <TreeViewItem Header="File1.txt"/>
+                            <TreeViewItem Header="File2.ppt"/>
+                            <TreeViewItem Header="File3.doc"/>
+                            <TreeViewItem Header="File4.xlsx"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="wangwu"/>
+                        <TreeViewItem Header="zhaoliu"/>
+                        <TreeViewItem Header="liuqi"/>
+                    </TreeViewItem>
+                </TreeView>
+
+               
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1"  Background="White" BorderBrush="#DDD" BorderThickness="1" Padding="10">
+            <StackPanel>
+                <!-- 文件操作按钮 -->
+                <TextBlock Text="文件操作" FontWeight="Bold" FontSize="16" Margin="0,10,0,5"/>
+                <Button Content="创建文件" Width="80" Height="30" Margin="0,5" Background="#17A2B8" Foreground="White"
+        Click="CreateFileButton_Click"/>
+                <Button Content="删除文件" Width="80" Height="30" Margin="0,5" Background="#FFC107" Foreground="Black"
+        Click="DeleteFileButton_Click"/>
+                <Button Content="打开文件" Width="80" Height="30" Margin="0,5" Background="#6C757D" Foreground="White"
+        Click="OpenFileButton_Click"/>
+                <Button Content="关闭文件" Width="80" Height="30" Margin="0,5" Background="#6C757D" Foreground="White"
+        Click="CloseFileButton_Click"/>
+                <Button Content="修改文件" Width="80" Height="30" Margin="0,5" Background="#6610F2" Foreground="White"
+        Click="ModifyFileButton_Click"/>
+                <Button Content="写文件" Width="80" Height="30" Margin="0,5" Background="#28A745" Foreground="White"
+        Click="WriteFileButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- 右侧：文件列表与细节展示 -->
+        <ScrollViewer Grid.Column="2" Margin="5">
+            <StackPanel Background="White" >
+                <!-- 主文件目录 -->
+                <TextBlock Text="1. 主文件目录 (MFD)" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                <DataGrid x:Name="MFDGrid" AutoGenerateColumns="True" Height="80" Margin="0,0,0,10"
+                          BorderBrush="#CCC" BorderThickness="1" AlternatingRowBackground="#F8F9FA"/>
+
+                <!-- 用户文件目录 -->
+                <TextBlock Text="2. 用户文件目录 (UFD)" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                <DataGrid x:Name="UFDGrid" AutoGenerateColumns="True" Height="100" Margin="0,0,0,10"
+                          BorderBrush="#CCC" BorderThickness="1" AlternatingRowBackground="#F8F9FA"/>
+
+                <!-- 已打开文件 -->
+                <TextBlock Text="3. 已打开文件表 (UOF)" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                <DataGrid x:Name="UOFGrid" AutoGenerateColumns="True" Height="80" Margin="0,0,0,10"
+                          BorderBrush="#CCC" BorderThickness="1" AlternatingRowBackground="#F8F9FA"/>
+
+                <!-- 磁盘显示 -->
+                <TextBlock Text="4. 磁盘显示" FontWeight="Bold" FontSize="16" Margin="0,5"/>
+                <DataGrid x:Name="DiskGrid" AutoGenerateColumns="True" Height="100" Margin="0,0,0,10"
+                          BorderBrush="#CCC" BorderThickness="1" AlternatingRowBackground="#F8F9FA"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

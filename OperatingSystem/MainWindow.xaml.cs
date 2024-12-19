@@ -69,11 +69,18 @@ namespace OperatingSystem
             MainFrame.Navigate(new Storage());
         }
 
-
-       private void MenuItem_equipment_Click(object sender, RoutedEventArgs e)
+        private void FileManage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new DiskSchedulerPage());
+            MainFrame.Navigate(new FileManage());
         }
+
+        ///// <summary>
+        ///// 点击"设备管理"菜单项时导航到 DeviceManagementPage 页面。
+        ///// </summary>
+        //private void MenuItem_DeviceManagement_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFrame.Navigate(new DeviceManagementPage());
+        //}
 
         ///// <summary>
         ///// 点击"文件管理"菜单项时导航到 FileManagementPage 页面。
