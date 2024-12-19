@@ -1,0 +1,118 @@
+﻿<Page x:Class="Equipment.DiskSchedulerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="磁盘管理 - 磁盘调度" FontFamily="Segoe UI" FontSize="14">
+    <Page.Resources>
+        <!-- 自定义样式 -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderBrush" Value="#388E3C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="250"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="180"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20" Background="#f5f5f5">
+        <!-- 定义行列 -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 输入区域 -->
+            <RowDefinition Height="*"/>
+            <!-- 结果区域 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 底部统计信息 -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <!-- 左侧输入 -->
+            <ColumnDefinition Width="3.5*"/>
+            <!-- 右侧结果 -->
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧输入区域 -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10" VerticalAlignment="Top">
+            <!-- 输入部分标题 -->
+            <TextBlock Text="磁盘调度输入参数" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" Foreground="#333"/>
+
+            <!-- 输入控件模块 -->
+            <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="5" Padding="10" Margin="0,5">
+                <StackPanel>
+                    <!-- 请求访问磁道号输入 -->
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Label Content="请求访问的磁道号序列:"/>
+                        <TextBox x:Name="TrackSequenceTextBox" Text="" Width="400"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
+
+                    <!-- 当前磁道号 -->
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Label Content="当前磁道号:"/>
+                        <TextBox x:Name="CurrentTrackTextBox" Width="400"/>
+                    </StackPanel>
+
+                    <Separator Margin="0,10"/>
+
+                    <!-- 移动方向 -->
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Label Content="磁头移动方向 (1-增加, 0-减少):"/>
+                        <TextBox x:Name="DirectionTextBox" Text="" Width="60" TextChanged="DirectionTextBox_TextChanged"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border BorderBrush="#ddd" BorderThickness="1" CornerRadius="5" Padding="5" Margin="0,10">
+                <GroupBox Header="选择磁盘调度算法" Background="#FFFFFF">
+                    <StackPanel>
+                        <RadioButton x:Name="FCFSRadioButton" Content="先来先服务磁盘调度算法 FCFS" IsChecked="True"/>
+                        <RadioButton x:Name="SSTFRadioButton" Content="最短寻道时间优先磁盘调度算法 SSTF"/>
+                        <RadioButton x:Name="SCANRadioButton" Content="扫描磁盘调度算法 SCAN"/>
+                        <RadioButton x:Name="CSCANRadioButton" Content="循环扫描磁盘调度算法 CSCAN"/>
+                    </StackPanel>
+                </GroupBox>
+            </Border>
+
+
+            <!-- 按钮区域 -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="StartSimulationButton" Content="开始模拟" Width="120" Height="35" Click="StartSimulation_Click"/>
+                <Button x:Name="StopSimulationButton" Content="停止模拟" Width="120" Height="35" Click="StopSimulation_Click"/>
+
+            </StackPanel>
+        </StackPanel>
+
+        <!-- 右侧结果区域 -->
+        <GroupBox Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Header="调度结果" Margin="5" Background="#ffffff" BorderBrush="#ddd" BorderThickness="1">
+            <DataGrid x:Name="ResultsDataGrid" AutoGenerateColumns="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="被访问的下一个磁盘的磁道号" Binding="{Binding Track}" Width="*" />
+                    <DataGridTextColumn Header="移动的距离" Binding="{Binding Distance}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+        <!-- 底部统计信息 -->
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" x:Name="SummaryTextBlock" FontWeight="Bold" FontSize="16" 
+                   TextAlignment="Center" Margin="5" Text="磁头移动的总距离: 0    平均寻道长度: 0.000" Foreground="#388E3C"/>
+    </Grid>
+</Page>

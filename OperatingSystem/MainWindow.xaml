@@ -14,7 +14,7 @@
                 <MenuItem Header="避免死锁" Click="MenuItem_AvoidDeadlock_Click"/>
             </MenuItem>
             <MenuItem Header="存储管理"  Click="MenuItem_StorageManagement_Click"/>
-            <MenuItem Header="设备管理"/>
+            <MenuItem Header="设备管理"  Click="MenuItem_equipment_Click"/>
             <MenuItem Header="文件管理"/>
         </Menu>
 

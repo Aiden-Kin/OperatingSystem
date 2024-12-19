@@ -1,4 +1,5 @@
-﻿using OperatingSystem.Progress;
+﻿using Equipment;
+using OperatingSystem.Progress;
 using OperatingSystem.store;
 using System.Text;
 using System.Windows;
@@ -68,13 +69,11 @@ namespace OperatingSystem
             MainFrame.Navigate(new Storage());
         }
 
-        ///// <summary>
-        ///// 点击"设备管理"菜单项时导航到 DeviceManagementPage 页面。
-        ///// </summary>
-        //private void MenuItem_DeviceManagement_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new DeviceManagementPage());
-        //}
+
+       private void MenuItem_equipment_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new DiskSchedulerPage());
+        }
 
         ///// <summary>
         ///// 点击"文件管理"菜单项时导航到 FileManagementPage 页面。
