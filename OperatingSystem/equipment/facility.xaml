@@ -32,7 +32,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid Margin="20" Background="#f5f5f5">
+    <Grid Background="#f5f5f5">
         <!-- 定义行列 -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

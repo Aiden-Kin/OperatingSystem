@@ -23,14 +23,9 @@ namespace OperatingSystem
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new DefaultPage());
+
         }
-        //private void OpenCreateProcessPage(object sender, RoutedEventArgs e)
-        //{
-        //    // 创建 create.xaml 窗口实例
-        //    create createWindow = new create();
-        //    createWindow.Show(); // 显示 create.xaml 窗口
-        //    this.Close(); // 关闭当前窗口（如果不想关闭主窗口，可以删除这一行）
-        //}
 
 
         /// <summary>
@@ -74,17 +69,7 @@ namespace OperatingSystem
             MainFrame.Navigate(new FileManage());
         }
 
-        ///// <summary>
-        ///// 点击"设备管理"菜单项时导航到 DeviceManagementPage 页面。
-        ///// </summary>
-        //private void MenuItem_DeviceManagement_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFrame.Navigate(new DeviceManagementPage());
-        //}
 
-        ///// <summary>
-        ///// 点击"文件管理"菜单项时导航到 FileManagementPage 页面。
-        ///// </summary>
         private void MenuItem_equipment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new DiskSchedulerPage());
