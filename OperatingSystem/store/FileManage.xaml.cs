@@ -260,23 +260,88 @@ namespace OperatingSystem.store
 
 
         // 添加以下方法模板到 FileManage.xaml.cs 文件中
+        // 关闭文件按钮点击事件
         private void CloseFileButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("关闭文件按钮被点击！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrEmpty(CurrentUsername))
+            {
+                MessageBox.Show("请先登录！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var selectedFile = UOFGrid.SelectedItem as UOF;
+            if (selectedFile == null)
+            {
+                MessageBox.Show("请选择要关闭的文件！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 从已打开文件表中删除该文件
+            UOFList.Remove(selectedFile);
+            UpdateGrids();
+
+            MessageBox.Show("文件已关闭！", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 
 
+
+        // 修改文件按钮点击事件
         private void ModifyFileButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("修改文件按钮被点击！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrEmpty(CurrentUsername))
+            {
+                MessageBox.Show("请先登录！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var selectedFile = UFDGrid.SelectedItem as UFD;
+            if (selectedFile == null)
+            {
+                MessageBox.Show("请选择要修改的文件！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 假设这是修改文件内容的操作，可以弹出一个对话框让用户输入新的内容
+            string newContent = "文件被修改"; // 这可以是一个弹出的输入框内容
+            Disk[selectedFile.BlockAddress].Data = newContent;
+
+            selectedFile.LastModified = DateTime.Now;
+
+            SaveUFD(); // 保存用户文件目录
+            UpdateGrids();
+
+            MessageBox.Show("文件修改成功！", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-
+        // 写文件按钮点击事件
         private void WriteFileButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("写文件按钮被点击！", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (string.IsNullOrEmpty(CurrentUsername))
+            {
+                MessageBox.Show("请先登录！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var selectedFile = UFDGrid.SelectedItem as UFD;
+            if (selectedFile == null)
+            {
+                MessageBox.Show("请选择要写入的文件！", "错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // 写入文件的逻辑
+            string fileContent = "文件被写入"; // 文件的内容可以通过输入框获取
+            Disk[selectedFile.BlockAddress].Data = fileContent;
+
+            selectedFile.LastModified = DateTime.Now;
+
+            SaveUFD(); // 保存用户文件目录
+            UpdateGrids();
+
+            MessageBox.Show("文件写入成功！", "成功", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
 
     }
 }
